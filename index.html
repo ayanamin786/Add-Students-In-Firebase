@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <style>
+        :root {
+            --primary: #00378a;
+            --primary-dark: #003386;
+            --bg: #f3f7ff;
+            --card: #ffffff;
+            --card-soft: #edf4ff;
+            --text: #1f2a37;
+            --muted: #5f6f86;
+            --border: #dfe9f5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--card);
+            padding: 28px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(45, 127, 249, 0.12);
+        }
+
+        h2 {
+            text-align: center;
+            margin: 0 0 22px;
+            font-size: 2rem;
+            color: var(--text);
+        }
+
+        .input-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
+
+        input {
+            flex: 1 1 180px;
+            min-width: 0;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98rem;
+            background: #fff;
+            color: var(--text);
+        }
+
+        input:focus {
+            outline: 2px solid rgba(45, 127, 249, 0.18);
+            border-color: var(--primary);
+        }
+
+        .action-btn,
+        button {
+            padding: 12px 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .action-btn:hover,
+        button:hover {
+            background: var(--primary-dark);
+        }
+
+        .remove-all {
+            flex: 1 1 200px;
+        }
+
+        #con {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .student {
+            background: var(--card-soft);
+            padding: 16px 18px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .student h3,
+        .student p {
+            margin: 0;
+        }
+
+        .student h3 {
+            font-size: 1.05rem;
+            color: var(--text);
+        }
+
+        .student p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .student-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .edit-btn,
+        .remove-btn {
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            background: var(--primary);
+            color: white;
+        }
+
+        .remove-btn {
+            background: #e74c3c;
+        }
+
+        .remove-btn:hover {
+            background: #d63b2f;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .input-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .action-btn,
+            button,
+            .edit-btn,
+            .remove-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student List</h2>
+
+        <div class="input-row">
+            <input type="text" id="name" placeholder="Enter student name">
+            <input type="email" id="email" placeholder="Enter student email">
+            <button class="action-btn" type="button" onclick="addstd()">Add</button>
+            <button class="action-btn remove-all" type="button" onclick="removestd()">Remove All</button>
+        </div>
+
+        <div id="con"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-database-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBJrP_k_GvdBj-2bUBenE66E0PwLKPqkYk",
+            authDomain: "quizapp-95521.firebaseapp.com",
+            databaseURL: "https://quizapp-95521-default-rtdb.firebaseio.com",
+            projectId: "quizapp-95521",
+            storageBucket: "quizapp-95521.firebasestorage.app",
+            messagingSenderId: "944364282125",
+            appId: "1:944364282125:web:45ce92590cf6427b0e1044"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="./index.js"></script>
+</body>
+</html>
