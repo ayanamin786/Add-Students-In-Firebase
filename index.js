@@ -5,7 +5,7 @@ var con = document.getElementById("con");
 async function addstd() {
     var studentName = namee.value.trim();
     var studentEmail = email.value.trim()
-    if (studentName && studentEmail  === ""&& studentEmail === "") {
+    if (studentName   === "" && studentEmail === "") {
         alert("Please enter student name Or email");
         return;
     }
